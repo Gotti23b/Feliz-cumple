@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz cumple, Viole 💜</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+body{
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;
+  background:radial-gradient(circle at 50% 20%,#7c3aed 0,#3b176d 35%,#130725 75%,#08030f 100%);
+}
+.stars{position:fixed;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:45px 45px;opacity:.22}
+.card{
+  position:relative;z-index:2;width:min(90%,700px);padding:55px 30px;
+  text-align:center;border:1px solid rgba(255,255,255,.2);
+  border-radius:30px;background:rgba(20,8,38,.58);backdrop-filter:blur(12px);
+  box-shadow:0 25px 80px rgba(0,0,0,.45);
+}
+.emoji{font-size:4rem;animation:float 2.5s ease-in-out infinite}
+h1{margin:10px 0;font-size:clamp(3rem,10vw,6.5rem);line-height:.95}
+h1 span{color:#e9b7ff}
+p{font-size:1.2rem;line-height:1.6;margin:20px auto;max-width:520px;color:#eee}
+button{
+  border:0;border-radius:999px;padding:14px 24px;font-size:1rem;font-weight:700;
+  color:#271033;background:#f3c4ff;cursor:pointer;box-shadow:0 8px 25px rgba(214,126,255,.3);
+}
+button:hover{transform:translateY(-2px)}
+#message{display:none;margin-top:20px;font-size:1.15rem;color:#ffdfff}
+.confetti{position:fixed;top:-20px;width:10px;height:18px;z-index:3;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@keyframes float{50%{transform:translateY(-10px) rotate(3deg)}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<main class="card">
+  <div class="emoji">🎂✨</div>
+  <h1>¡Feliz cumple,<br><span>Viole!</span> 💜</h1>
+  <p>Hoy es tu día, así que esta página es especialmente para vos. Espero que tengas un cumple increíble, lleno de momentos lindos, risas y gente que te quiere mucho. 🎉</p>
+  <button onclick="celebrate()">🎊 Abrir sorpresa</button>
+  <div id="message">💜 Que tengas un día hermoso. ¡Feliz cumpleaños, Viole! 🥳</div>
+</main>
+<script>
+function celebrate(){
+  document.getElementById('message').style.display='block';
+  for(let i=0;i<90;i++){
+    const c=document.createElement('div');
+    c.className='confetti';
+    c.style.left=Math.random()*100+'vw';
+    c.style.animationDuration=(2+Math.random()*3)+'s';
+    c.style.animationDelay=Math.random()*0.7+'s';
+    c.style.background=['#f3c4ff','#fff','#d8b4fe','#c084fc','#fde68a'][Math.floor(Math.random()*5)];
+    c.style.transform='rotate('+Math.random()*360+'deg)';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),6000);
+  }
+}
+</script>
+</body>
+</html>
